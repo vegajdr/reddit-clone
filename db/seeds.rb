@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+user = User.create!(first_name: "Jorge", last_name: "Ramirez", password: "hunter2")
+subreddit = Room.create!(name: "Main", category: "General")
