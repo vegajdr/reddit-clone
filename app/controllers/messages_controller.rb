@@ -19,6 +19,7 @@ class MessagesController < ApplicationController
   def new
     user = current_user
     @message = user.messages.new
+    authorize @message
   end
 
   def destroy
