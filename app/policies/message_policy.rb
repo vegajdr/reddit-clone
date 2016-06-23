@@ -9,6 +9,14 @@ class MessagePolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    true #if not subscribed to room?
+  end
+
+  def edit?
+    update?
+  end
+
+  def update?
+    user == record.user
   end
 end

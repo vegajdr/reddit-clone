@@ -4,7 +4,12 @@ class User < ActiveRecord::Base
 
   has_many :messages
   has_many :rooms, through: :messages
-  
+
+  has_many :moderators
+  has_many :rooms, through: :moderators
+
+
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 end

@@ -1,0 +1,6 @@
+<%= bootstrap_form_for @room, url: rooms_path do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :category %>
+  <%= f.hidden_field :user, value: @user.id %>
+  <button class="btn btn-primary">Save</button>
+<% end %>

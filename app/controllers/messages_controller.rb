@@ -8,6 +8,7 @@ class MessagesController < ApplicationController
     user = current_user
     room = Room.find params[:room_id]
     @message = user.messages.new(title: params[:message][:title], text: params[:message][:text], room_id: params[:room_id])
+    authorize @message
     if @message.save
       flash[:notice] = "Message created!"
       redirect_to room_path(room.id)
@@ -29,10 +30,30 @@ class MessagesController < ApplicationController
     redirect_to room_path(params[:room_id])
   end
 
+  def edit
+    @message = Message.find params[:id]
+    authorize @message
+
+  end
+
+  def update
+    @message = Message.find params[:id]
+    authorize @message
+    if @message.update approved_params
+      flash[:notice] = "Message Updated"
+      redirect_to @message.room
+    else
+      render :edit
+    end
+
+
+  end
+
+
   private
 
     def approved_params
-      params.require(:message).permit(:title, :text, :room_id)
+      params.require(:message).permit(:title, :text,)
     end
 
 end

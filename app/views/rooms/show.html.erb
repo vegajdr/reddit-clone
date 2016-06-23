@@ -13,9 +13,17 @@
         <td><%= message.title %></td>
         <td><%= message.text %></td>
         <td><%= message.user.first_name %></td>
-        <td><%= link_to "Delete", room_message_path(@room.id, message.id), method: :delete, class: "btn btn-primary" %></td>
+        <td> <% if policy(message).edit? %>
+              <%= link_to "Edit", edit_room_message_path(@room.id, message.id), class: "btn btn-primary" %>
+            <% end %>
+        </td>
+        <td> <% if policy(message).destroy? %>
+              <%= link_to "Delete", room_message_path(@room.id, message.id), method: :delete, class: "btn btn-danger" %>
+            <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
-  <%= link_to "New Comment", new_room_message_path(@room.id), class: "btn btn-primary" %>
 </table>
+
+<%= link_to "New Comment", new_room_message_path(@room.id), class: "btn btn-primary" %>

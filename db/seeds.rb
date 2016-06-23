@@ -26,3 +26,7 @@ post7 = user.messages.create!(text: "Can't stop posting!", title: "New Stuff", r
 post8 = user1.messages.create!(text: "I'm obsessed with this website!", title: "YES!", room_id: subreddit2.id)
 post9 = user.messages.create!(text: "I'll be so popular", title: "Second Room", room_id: subreddit2.id)
 post10 = user1.messages.create!(text: "I need to slow down", title: "Memes and Cats", room_id: subreddit2.id)
+
+
+moderator = Moderator.create!(user_id: user.id, room_id: subreddit.id)
+moderator = Moderator.create!(user_id: user.id, room_id: subreddit2.id)
