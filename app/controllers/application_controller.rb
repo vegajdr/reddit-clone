@@ -3,7 +3,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def current_user
-    User.find 1
-  end
+  before_action :authenticate_user!
+
+  include Pundit
+  # after_action :verify_authorized
+  #
+  # rescue_from Pundit::NotAuthorizedError do |e|
+  #   flash[:danger] = "NO!"
+  #   redirect_to root_path
+  # end
 end

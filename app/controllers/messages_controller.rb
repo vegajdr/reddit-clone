@@ -21,6 +21,13 @@ class MessagesController < ApplicationController
     @message = user.messages.new
   end
 
+  def destroy
+    message = Message.find params[:id]
+    authorize message
+    message.destroy
+    redirect_to room_path(params[:room_id])
+  end
+
   private
 
     def approved_params

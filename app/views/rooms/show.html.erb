@@ -4,6 +4,7 @@
       <th>Title</th>
       <th>Text</th>
       <th>User</th>
+      <th>Buttons</th>
     </tr>
   </thead>
   <tbody>
@@ -12,6 +13,7 @@
         <td><%= message.title %></td>
         <td><%= message.text %></td>
         <td><%= message.user.first_name %></td>
+        <td><%= link_to "Delete", room_message_path(@room.id, message.id), method: :delete, class: "btn btn-primary" %></td>
       </tr>
     <% end %>
   </tbody>
