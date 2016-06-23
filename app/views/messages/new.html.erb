@@ -1,0 +1,5 @@
+<%= bootstrap_form_for @message, url: room_messages_path do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_field :text %>
+  <button class="btn btn-primary">Save</button>
+<% end %>

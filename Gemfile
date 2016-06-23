@@ -11,12 +11,16 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'rails-erd'
 gem 'twitter-bootstrap-rails'
+gem 'bootstrap_form'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'devise'
+gem 'pundit'
 
 
 group :development, :test do
   gem 'byebug'
   gem 'pry-rails'
+  gem 'better_errors'
 end
 
 group :development do
