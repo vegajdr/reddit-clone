@@ -1,7 +1,7 @@
 class MessagePolicy < ApplicationPolicy
 
   def destroy?
-    user == record.user && (DateTime.now.utc < record.created_at + 1.hour)
+    (user == record.user && (DateTime.now.utc < record.created_at + 1.hour)) || is_moderator?
   end
 
   def new?
@@ -17,6 +17,10 @@ class MessagePolicy < ApplicationPolicy
   end
 
   def update?
-    user == record.user
+    user == record.user || is_moderator?
+  end
+
+  def is_moderator?
+    record.room.moderators.find_by(user_id: user.id)
   end
 end

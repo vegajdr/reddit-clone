@@ -8,6 +8,7 @@ class RoomsController < ApplicationController
   def show
     @room = Room.find params[:id]
     authorize @room
+    @moderator = @room.moderators.find_by(user_id: current_user.id)
     @messages = @room.messages
   end
 
@@ -27,8 +28,20 @@ class RoomsController < ApplicationController
     else
       render :index
     end
+  end
+
+  def edit
+    @room = Room.find params[:id]
+    authorize @room
+  end
+
+  def update
 
   end
+
+  # def is_moderator? user
+  #   room.moderators.find_by(user_id: user.id)
+  # end
 
 
 end

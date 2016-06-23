@@ -1,4 +1,9 @@
+<% if @moderator %>
+  <h4> You are a moderator of this subrepposteddit </h4>
+<% end %>
+
 <table class="table table-hover table-striped table-condensed">
+  <h2> <%= @room.name %> </h2>
   <thead>
     <tr>
       <th>Title</th>
