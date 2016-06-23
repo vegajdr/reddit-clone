@@ -6,8 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user = User.create!(first_name: "Jorge", last_name: "Ramirez", password: "hunter2")
-user1 = User.create!(first_name: "David", last_name: "Vega", password: "hunter2")
+user = User.create!(first_name: "Jorge", last_name: "Ramirez", password: "hunter2", email: "example@gmail.com")
+user1 = User.create!(first_name: "David", last_name: "Vega", password: "hunter2", email: "sample@hotmail.com")
 
 subreddit = Room.create!(name: "Main", category: "General")
 subreddit2 = Room.create!(name: "Articles", category: "Random")

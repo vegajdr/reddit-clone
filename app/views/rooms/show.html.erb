@@ -15,5 +15,5 @@
       </tr>
     <% end %>
   </tbody>
-  <%= link_to "New Comment", new_room_message_path(:id), class: "btn btn-primary" %>
+  <%= link_to "New Comment", new_room_message_path(@room.id), class: "btn btn-primary" %>
 </table>

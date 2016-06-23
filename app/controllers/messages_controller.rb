@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
 
   def create
     user = current_user
-    room = Room.find params[:message][:room_id]
+    room = Room.find params[:room_id]
     @message = user.messages.new(title: params[:message][:title], text: params[:message][:text], room_id: params[:room_id])
     if @message.save
       flash[:notice] = "Message created!"
