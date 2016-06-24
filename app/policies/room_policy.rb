@@ -17,6 +17,6 @@ class RoomPolicy < ApplicationPolicy
   end
 
   def update?
-    record.moderators.find_by(user_id: user.id)
+    record.moderators.find_by(user_id: user.id) || user.admin?
   end
 end
