@@ -8,6 +8,8 @@
 
 user = User.create!(first_name: "Jorge", last_name: "Ramirez", password: "hunter2", email: "example@gmail.com")
 user1 = User.create!(first_name: "David", last_name: "Vega", password: "hunter2", email: "sample@hotmail.com")
+admin = User.create!(first_name: "Admin", last_name: "Account", password: "hunter2", email: "admin@admin.com", admin?: true)
+
 
 subreddit = Room.create!(name: "Main", category: "General")
 subreddit2 = Room.create!(name: "Articles", category: "Random")
@@ -32,3 +34,7 @@ post10 = user1.messages.create!(text: "I need to slow down", title: "Memes and C
 
 moderator = Moderator.create!(user_id: user.id, room_id: subreddit.id)
 moderator = Moderator.create!(user_id: user.id, room_id: subreddit2.id)
+
+# votes
+
+vote = admin.votes.create!(message_id: post.id, vote: 1)

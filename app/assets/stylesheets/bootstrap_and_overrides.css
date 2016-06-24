@@ -3,5 +3,27 @@
 
   Use Font Awesome icons (default)
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
-  =require twitter-bootstrap-static/fontawesome
+  =require twitter-bootstrap-static/sprites
   */
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.strokeme {
+    font-family: 'Lato', sans-serif;
+    color:  #0a6abf;
+    font-size: 40px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #000;
+}
+
+.glyphicon {
+  font-size: 20px;
+}

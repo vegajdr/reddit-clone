@@ -7,6 +7,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find params[:id]
+    @vote = Vote.new
     authorize @room
     @moderator = @room.moderators.find_by(user_id: current_user.id)
     @messages = @room.messages

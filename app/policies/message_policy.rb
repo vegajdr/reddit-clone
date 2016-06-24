@@ -23,4 +23,8 @@ class MessagePolicy < ApplicationPolicy
   def is_moderator?
     record.room.moderators.find_by(user_id: user.id)
   end
+
+  def vote?
+    true
+  end
 end
