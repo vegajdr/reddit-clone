@@ -19,7 +19,7 @@
         </td>
         <td>
           <% if policy(room).destroy? %>
-            <%= link_to "Delete", room_path(room.id), method: :delete, class: "btn btn-primary"  %>
+            <%= link_to "Delete", room_path(room.id), method: :delete, class: "btn btn-danger"  %>
           <% end %>
         </td>
       </tr>

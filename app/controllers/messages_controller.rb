@@ -5,6 +5,11 @@ class MessagesController < ApplicationController
     @messages = current_user.messages
   end
 
+  def show
+    @message = Message.find params[:id]
+    authorize @message
+  end
+
   def create
     user = current_user
     room = Room.find params[:room_id]
@@ -51,19 +56,9 @@ class MessagesController < ApplicationController
   def vote
     vote = current_user.votes.find_by(message_id: params[:message_id])
     if vote
-      case params[:vote]
-      when "up"
-        vote.update(vote: 1)
-      when "down"
-        vote.update(vote: -1)
-      end
+      vote_update vote: vote, value: params[:vote]
     else
-      case params[:vote]
-      when "up"
-        Vote.create(user_id: current_user.id, message_id: params[:message_id], vote: 1)
-      when "down"
-        Vote.create(user_id: current_user.id, message_id: params[:message_id], vote: -1)
-      end#New Vote creation
+      vote_create params: params[:vote], message_id: params[:message_id]
     end
     redirect_to room_path(params[:room_id])
   end
@@ -73,6 +68,24 @@ class MessagesController < ApplicationController
 
     def approved_params
       params.require(:message).permit(:title, :text,)
+    end
+
+    def vote_update vote: vote, value: value
+      case value
+      when "up"
+        vote.update(vote: 1)
+      when "down"
+        vote.update(vote: -1)
+      end
+    end
+
+    def vote_create params: params, message_id: message_id
+      case params
+      when "up"
+        Vote.create(user_id: current_user.id, message_id: message_id, vote: 1)
+      when "down"
+        Vote.create(user_id: current_user.id, message_id: message_id, vote: -1)
+      end#
     end
 
 end
