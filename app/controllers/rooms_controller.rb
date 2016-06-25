@@ -40,6 +40,13 @@ class RoomsController < ApplicationController
 
   end
 
+  def destroy
+    room = Room.find_by params[:id]
+    authorize room
+    room.destroy
+    redirect_to rooms_path
+  end
+
   # def is_moderator? user
   #   room.moderators.find_by(user_id: user.id)
   # end

@@ -17,6 +17,11 @@
             <%= link_to "Edit", edit_room_path(room.id), class: "btn btn-primary"  %>
           <% end %>
         </td>
+        <td>
+          <% if policy(room).destroy? %>
+            <%= link_to "Delete", room_path(room.id), method: :delete, class: "btn btn-primary"  %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

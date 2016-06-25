@@ -65,7 +65,6 @@ class MessagesController < ApplicationController
         Vote.create(user_id: current_user.id, message_id: params[:message_id], vote: -1)
       end#New Vote creation
     end
-    raise
     redirect_to room_path(params[:room_id])
   end
 
