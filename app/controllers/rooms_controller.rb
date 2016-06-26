@@ -11,6 +11,7 @@ class RoomsController < ApplicationController
     authorize @room
     @moderator = @room.moderators.find_by(user_id: current_user.id)
     @messages = @room.messages.paginate(page: params[:page], per_page: 2)
+    @current_vote = current_user.votes.find_by
   end
 
   def new

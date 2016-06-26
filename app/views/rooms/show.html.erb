@@ -22,8 +22,14 @@
         <td><%= message.text %></td>
         <td><%= message.user.first_name %></td>
         <td>
-          <%= link_to room_message_vote_path(@room.id, message.id, vote: "up"), method: :post do %>
-            <span class="glyphicon glyphicon-arrow-up"></span>
+          <% if current_user.votes.find_by(message_id: message.id).vote == 1 %>
+            <%= link_to room_message_vote_path(@room.id, message.id, vote: "up"), method: :post do %>
+              <span class="glyphicon glyphicon-arrow-up orange"></span>
+            <% end %>
+          <% else %>
+            <%= link_to room_message_vote_path(@room.id, message.id, vote: "up"), method: :post do %>
+              <span class="glyphicon glyphicon-arrow-up"></span>
+            <% end %>
           <% end %>
         </td>
         <td>
