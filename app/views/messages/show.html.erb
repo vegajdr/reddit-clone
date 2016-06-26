@@ -1,2 +1,19 @@
 <h2><%= @message.title %></h2>
 <p><%= @message.text %></p>
+
+<table class="table table-hover table-striped table-condensed"><!-- Display Comments Here -->
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.user.first_name %></td>
+        <td><%= comment.comment %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

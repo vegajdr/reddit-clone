@@ -3,6 +3,7 @@ class Message < ActiveRecord::Base
   belongs_to :room
 
   has_many :votes
+  has_many :comments
 
   validates_presence_of :title, :text, :user_id, :room_id
 

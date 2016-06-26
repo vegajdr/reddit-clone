@@ -41,6 +41,11 @@ vote = user.votes.create!(message_id: post.id, vote: 1)
 vote1 = user1.votes.create!(message_id: post.id, vote: 1)
 vote2 = admin.votes.create!(message_id: post.id, vote: 1)
 
+comment = post.comments.create!(user_id: admin.id, comment: "This is just a simple comment, mostly positive criticism")
+comment1 = post.comments.create!(user_id: admin.id, comment: "This is just a simple comment, mostly positive criticism")
+comment2 = post.comments.create!(user_id: user.id, comment: "This is just a simple comment, mostly positive criticism")
+comment3 = post.comments.create!(user_id: user1.id, comment: "This is just a simple comment, mostly positive criticism")
+
 # (1...10).to_a.each do |i|
 #   Vote.create!(message_id: 1, vote: 1)
 # end

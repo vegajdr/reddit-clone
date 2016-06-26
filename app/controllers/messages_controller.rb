@@ -8,6 +8,7 @@ class MessagesController < ApplicationController
   def show
     @message = Message.find params[:id]
     authorize @message
+    @comments = @message.comments
   end
 
   def create
