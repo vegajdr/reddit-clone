@@ -10,8 +10,8 @@ class RoomsController < ApplicationController
     @vote = Vote.new
     authorize @room
     @moderator = @room.moderators.find_by(user_id: current_user.id)
-    @messages = @room.messages.paginate(page: params[:page], per_page: 2)
-    @current_vote = current_user.votes.find_by
+    @messages = @room.messages.paginate(page: params[:page], per_page: 10)
+    @current_vote = current_user.votes.find_by message_id: params[:message_id]
   end
 
   def new
@@ -51,6 +51,14 @@ class RoomsController < ApplicationController
   # def is_moderator? user
   #   room.moderators.find_by(user_id: user.id)
   # end
+
+  def sort
+    @messages.each do |message|
+      message.votes.each do |vote|
+        vote.vote.sort_by { |vote| vote.reduce(0)  }
+      end
+    end
+  end
 
 
 end
