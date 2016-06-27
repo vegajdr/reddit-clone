@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get "/sandbox/homework" => "sandbox#homework"
+
+
   # post '/rooms/:room_id/messages/:id/vote/:vote' => 'votes#create', as: :vote
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

@@ -9,8 +9,8 @@
       <th>Title</th>
       <th>Text</th>
       <th>User</th>
-      <th>Upvote</th>
-      <th>Downvote</th>
+      <th>Vote</th>
+      <th>Score</th>
       <th>Edit</th>
       <th>Delete</th>
     </tr>
@@ -38,12 +38,10 @@
               <span class="glyphicon glyphicon-arrow-up"></span>
             <% end %>
           <% end %>
-        </td>
         <!-- Upvote -->
 
 
         <!-- DOWNVOTE -->
-        <td>
           <% if current_user.votes.find_by(message_id: message.id) && current_user.votes.find_by(message_id: message.id).vote == -1 %>
             <%= link_to room_message_vote_path(@room.id, message.id, vote: "up"), method: :post do %>
               <span class="glyphicon glyphicon-arrow-down orange"></span>
@@ -56,6 +54,8 @@
           <% end %>
         <% end %>
         </td>
+
+        <td> <%= message.vote_total %>
         <!-- Downvote -->
 
 
