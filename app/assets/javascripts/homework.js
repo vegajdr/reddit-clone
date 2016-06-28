@@ -30,9 +30,8 @@ $(document).ready(function(){
     total = total - 1;
     result.text(total);
 
-    if (total < 10) {
-      result.removeClass("red");
-    }
+    resultColor(total, result);
+
   });
 
   $("#reset").click(function(){
@@ -60,6 +59,11 @@ $(document).ready(function(){
     else {
       alert("You can't reset 0");
     }
+
+    localStorage.setItem("storedTotal", savedTotal);
+
+    var retrieve = localStorage.getItem("storedTotal");
+    console.log(retrieve);
   });
 
   $("#clear-log").click(function(){
