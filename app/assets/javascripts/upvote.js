@@ -17,6 +17,7 @@ $(document).ready(function(){
 
       success: function() {
         // alert("Vote should have saved");
+        clicked.closest("tr").find(".orange").removeClass("orange")
         clicked.addClass("orange")
       }
     })
@@ -26,7 +27,7 @@ $(document).ready(function(){
 
   $(".ajax-downvote").click(function(){
     console.log("Downvote click");
-    
+
     var clicked = $(this);
     var messageId = clicked.data("message-id");
     var roomId = clicked.data("room-id");
@@ -40,7 +41,7 @@ $(document).ready(function(){
       error: function() { alert("Something went wrong!")},
 
       success: function() {
-        // alert("Vote should have saved");
+        clicked.closest("tr").find(".orange").removeClass("orange")
         clicked.addClass("orange")
       }
     })
