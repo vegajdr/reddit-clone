@@ -61,7 +61,12 @@ class MessagesController < ApplicationController
     else
       vote_create params: params[:vote], message_id: params[:message_id]
     end
-    redirect_to room_path(params[:room_id])
+
+    respond_to do |format|
+      format.html { redirect_to :back}
+      format.json { render json: { status: :ok, message: message}}
+    end
+
   end
 
 

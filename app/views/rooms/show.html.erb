@@ -25,35 +25,17 @@
         <td><%= message.user.first_name %></td>
 
 
-        <!-- UPVOTE -->
         <td>
-          <% if current_user.votes.find_by(message_id: message.id) && current_user.votes.find_by(message_id: message.id).vote == 1 %>
-            <%= link_to room_message_vote_path(@room.id, message.id, vote: "up"), method: :post do %>
-              <span class="glyphicon glyphicon-arrow-up orange"></span>
-            <% end %>
-
-          <% else %>
-
-            <%= link_to room_message_vote_path(@room.id, message.id, vote: "up"), method: :post do %>
-              <span class="glyphicon glyphicon-arrow-up"></span>
-            <% end %>
-          <% end %>
-        <!-- Upvote -->
-
-
-        <!-- DOWNVOTE -->
-          <% if current_user.votes.find_by(message_id: message.id) && current_user.votes.find_by(message_id: message.id).vote == -1 %>
-            <%= link_to room_message_vote_path(@room.id, message.id, vote: "up"), method: :post do %>
-              <span class="glyphicon glyphicon-arrow-down orange"></span>
-            <% end %>
-
-          <% else %>
-
-          <%= link_to room_message_vote_path(@room.id, message.id, vote: "down"), method: :post do %>
-            <span class="glyphicon glyphicon-arrow-down"></span>
-          <% end %>
-        <% end %>
+          <a href ="#" class="glyphicon glyphicon-arrow-up ajax-upvote" data-room-id=<%= @room.id %> data-message-id=<%= message.id %>>
         </td>
+
+        <td>
+          <a href ="#" class="glyphicon glyphicon-arrow-down ajax-downvote" data-room-id=<%= @room.id %> data-message-id=<%= message.id %>>
+        </td>
+
+
+
+        <!-- UPVOTE -->
 
         <td> <%= message.vote_total %>
         <!-- Downvote -->
