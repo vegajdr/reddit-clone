@@ -26,7 +26,7 @@ $(document).ready(function(){
 
   $(".ajax-downvote").click(function(){
     console.log("Downvote click");
-
+    
     var clicked = $(this);
     var messageId = clicked.data("message-id");
     var roomId = clicked.data("room-id");

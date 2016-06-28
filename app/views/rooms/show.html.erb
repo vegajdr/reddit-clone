@@ -26,11 +26,11 @@
 
 
         <td>
-          <a href ="#" class="glyphicon glyphicon-arrow-up ajax-upvote" data-room-id=<%= @room.id %> data-message-id=<%= message.id %>>
+          <a href ="#" class="glyphicon glyphicon-arrow-up ajax-upvote <%= message.upvote_color(current_user) %>" data-room-id=<%= @room.id %> data-message-id=<%= message.id %>>
         </td>
 
         <td>
-          <a href ="#" class="glyphicon glyphicon-arrow-down ajax-downvote" data-room-id=<%= @room.id %> data-message-id=<%= message.id %>>
+          <a href ="#" class="glyphicon glyphicon-arrow-down ajax-downvote <%= message.downvote_color(current_user) %>" data-room-id=<%= @room.id %> data-message-id=<%= message.id %>>
         </td>
 
 
