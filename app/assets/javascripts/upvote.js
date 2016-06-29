@@ -46,6 +46,17 @@ $(document).ready(function(){
       }
     })
 
+    $.ajax("/rooms/" + roomId + "/messages/" + messageId + "/vote", {
+      method: "POST",
+      data: { vote: "down"},
+      error: function() { alert("Something went wrong!")},
+
+      success: function() {
+        clicked.closest("tr").find(".orange").removeClass("orange")
+        clicked.addClass("orange")
+      }
+    })
+
 
 
 

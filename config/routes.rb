@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :messages do
       resources :comments
       post :vote
+      get  :score
     end
   end
 

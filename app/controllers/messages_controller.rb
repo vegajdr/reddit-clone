@@ -69,6 +69,16 @@ class MessagesController < ApplicationController
 
   end
 
+  def score
+    message = Message.find params[:message_id]
+
+    respond_to do |format|
+      format.html { redirect_to :back}
+      format.json { render json: { status: :ok, score: message.vote_total}}
+    end
+
+  end
+
 
   private
 
