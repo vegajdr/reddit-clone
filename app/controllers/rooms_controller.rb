@@ -25,7 +25,7 @@ class RoomsController < ApplicationController
     authorize @room
     if @room.save
       @room.moderators.create!(user_id: params[:room][:user])
-      flash[:notice] = "Room created, you are now a moderator for this room"
+      flash[:notice] = 'Room created, you are now a moderator for this room'
       redirect_to rooms_path
     else
       render :index
@@ -38,7 +38,6 @@ class RoomsController < ApplicationController
   end
 
   def update
-
   end
 
   def destroy
@@ -55,10 +54,8 @@ class RoomsController < ApplicationController
   def sort
     @messages.each do |message|
       message.votes.each do |vote|
-        vote.vote.sort_by { |vote| vote.reduce(0)  }
+        vote.vote.sort_by { |vote| vote.reduce(0) }
       end
     end
   end
-
-
 end
