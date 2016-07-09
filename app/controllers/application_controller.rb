@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   include Pundit
-  after_action :verify_authorized, unless: :devise_controller?
+  # after_action :verify_authorized, unless: :devise_controller?
 
   rescue_from Pundit::NotAuthorizedError do |e|
     flash[:danger] = "You don't have permissions for this request"
